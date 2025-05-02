@@ -1,0 +1,249 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+html,
+body {
+    height: 100vh;
+    width: 100%;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* Chat Container */
+.chat_container {
+    width: 100%;
+    height: 80%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    background-color: #000;
+    /* Same as prompt background */
+    overflow: auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    /* subtle shadow */
+}
+
+/* Chat Boxes */
+.userchatbox,
+.aichatbox {
+    width: 60%;
+    position: relative;
+}
+
+.user_chat_area {
+    width: 90%;
+    padding: 2rem;
+    border-radius: 40px 0px 40px 40px;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    position: relative;
+    left: 70%;
+    font-size: 1.3rem;
+    box-shadow: -2.5px 3px 5px rgba(120, 120, 120, 0.6);
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.chooseimg {
+    width: 40%;
+    height: 40%;
+}
+
+.ai_chat_area {
+    position: relative;
+    left: 10%;
+    padding: 2rem;
+    border-radius: 0px 40px 40px 40px;
+    background-color: #2b2b2b;
+    color: #ffffff;
+    font-size: 1.3rem;
+    box-shadow: 1px 1px 8px rgba(208, 207, 207, 0.6);
+}
+
+/* Icons */
+#botimage,
+#personimage {
+    position: absolute;
+    filter: drop-shadow(0 0 10px #0080ff);
+}
+
+#personimage {
+    left: 161%;
+}
+
+/* #botimage:hover, #personimage:hover {
+    transform: scale(1.1);
+} */
+#botimage {
+    left: 0.4%;
+}
+
+img {
+    height: 4rem;
+    width: 4rem;
+}
+
+/* Prompt Area */
+.prompt {
+    width: 100%;
+    height: 20%;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+    /* top shadow for "pop-out" */
+    border-top: none;
+}
+
+/* Input Styling */
+.prompt input {
+    width: 50%;
+    height: 2rem;
+    padding: 2rem;
+    border-radius: 4rem;
+    background-color: #1f1f1f;
+    color: #fff;
+    font-size: 1.4rem;
+    border: 1px solid #333;
+    box-shadow: inset 0 0 10px #000;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.prompt input:focus {
+    box-shadow: 0 0 6px #0080ff;
+}
+
+/* Placeholder Styling */
+::placeholder {
+    color: #ffffffd0;
+    /* shiny white */
+    font-weight: 600;
+}
+
+/* Send Button */
+.prompt button {
+    background-color: transparent;
+    border: 3px solid #0080ff;
+    border-radius: 3rem;
+    width: 4rem;
+    height: 4rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prompt button:hover {
+    background-color: #0080ff;
+    color: #fff;
+    box-shadow: 0 0 12px #0080ff;
+}
+
+/* Loader (if any) */
+#load {
+    background-color: transparent;
+}
+
+@media (max-width: 768px) {
+
+    /* Adjust Chat Area Widths */
+    .userchatbox,
+    .aichatbox {
+        width: 100%;
+    }
+
+    /* Reduce the size of chat areas */
+    .user_chat_area,
+    .ai_chat_area {
+        font-size: 1.1rem;
+        padding: 1.5rem;
+    }
+
+    /* Adjust the image sizes */
+    #botimage,
+    #personimage {
+        max-width: 15vw;
+        max-height: 15vh;
+    }
+
+    /* Adjust Prompt Area */
+    .prompt {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    /* Adjust Input Area */
+    .prompt input {
+        width: 80%;
+        height: 2.5rem;
+        font-size: 1.2rem;
+    }
+
+    .prompt button {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
+    /* Align buttons next to input */
+    .prompt button,
+    .prompt input {
+        margin: 0;
+    }
+
+    /* Positioning for Upload and Image buttons */
+    .prompt {
+        flex-direction: row;
+        gap: 1rem;
+        justify-content: space-between;
+    }
+}
+
+/* Media Query for Small Screens (Mobile View) */
+@media (max-width: 380px) {
+
+    /* Smaller font size for mobile */
+    .user_chat_area,
+    .ai_chat_area {
+        font-size: 1rem;
+        padding: 1rem;
+        /* width: 50%; */
+    }
+    .user_chat_area {
+        width: 50%;
+    }
+    .ai_chat_area {
+        width: 50%;
+    }
+    .prompt {
+        padding: 1rem;
+    }
+
+    .prompt input {
+        width: 75%;
+        padding: none;
+        margin: none;
+    }
+
+    .prompt ::placeholder {
+        font-size: .6rem;
+    }
+
+    .prompt button {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    /* Make sure buttons don't overlap */
+}
