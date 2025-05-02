@@ -123,6 +123,13 @@ prompt.addEventListener("keydown", (e) => {
 
     }
 })
+// Trigger chat when Upload button (btn2) is clicked
+document.querySelector("#btn2").addEventListener("click", () => {
+    if (prompt.value.trim() !== "") {
+        handlechatresponse(prompt.value);
+    }
+});
+
 imagebtn.addEventListener("click", () => {
 
     imagebtn.querySelector("input").click()
