@@ -90,7 +90,7 @@ function handlechatresponse(userMessage) {
     setTimeout(async () => {
         let html = `<img src="Bot.png" alt="bot" id="botimage">
                 <div class="ai_chat_area" id="area">
-                <img src="Dual Ballgif" alt="dual">
+                <img src="Dual Ball.gif" alt="dual">
                 </div>`
 
         let aichatbox = createChatBox(html, "aichatbox");
