@@ -88,9 +88,9 @@ function handlechatresponse(userMessage) {
     box.scrollTo({ top: box.scrollHeight, behavior: "smooth" })
 
     setTimeout(async () => {
-        let html = `<img src="Mark_RGB_Blue.png" alt="bot" id="botimage">
+        let html = `<img src="Bot.png" alt="bot" id="botimage">
                 <div class="ai_chat_area" id="area">
-                <img src="Dual Ball@1x-1.2s-205px-205px.gif" alt="dual">
+                <img src="Dual Ballgif" alt="dual">
                 </div>`
 
         let aichatbox = createChatBox(html, "aichatbox");
