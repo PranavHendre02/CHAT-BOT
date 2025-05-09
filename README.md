@@ -1,7 +1,8 @@
 # 🔮 AI Chat Bot - Gemini Powered
 
 A sleek and responsive web-based chatbot interface powered by **Google Gemini 2.0 Flash API** for generating content and analyzing uploaded images. Built using **vanilla JavaScript**, this project allows users to interact via text or image prompts with a visually minimal, neon-styled UI.
-#✅ Live Demo: [ChatBot](chatbotpranav.netlify.app)
+---
+✅ Live Demo: [ChatBot](chatbotpranav.netlify.app)
 ---
 
 ## ✨ Features
