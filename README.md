@@ -21,7 +21,7 @@ A modern, responsive web-based chatbot powered by the **Google Gemini 2.0 Flash 
 
 ## 📸 Screenshot
 
- [Interface.png](https://github.com/PranavHendre02/CHAT-BOT/blob/d1813e8794e5a637a73f5754b1fa7a3e86aabc8f/Interface.png)
+ ![image alt](https://github.com/PranavHendre02/CHAT-BOT/blob/d1813e8794e5a637a73f5754b1fa7a3e86aabc8f/Interface.png)
 
 ---
 
