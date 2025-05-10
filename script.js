@@ -118,7 +118,7 @@ imageInput.addEventListener("change", () => {
         states.user.file = {
             mime_type: file.type,
             data: base64string
-        };
+        }; 
     };
     reader.readAsDataURL(file);
 });
