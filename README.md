@@ -1,53 +1,56 @@
-# 🔮 AI Chat Bot - Gemini Powered
+# 🔮 Velocity AI Chatbot - Gemini Powered
 
-A sleek and responsive web-based chatbot interface powered by **Google Gemini 2.0 Flash API** for generating content and analyzing uploaded images. Built using **vanilla JavaScript**, this project allows users to interact via text or image prompts with a visually minimal, neon-styled UI.
----
-✅ Live Demo: [ChatBot](https://chatbotpranav.netlify.app)
+A modern, responsive web-based chatbot powered by the **Google Gemini 2.0 Flash API** for generating natural language responses and analyzing uploaded images. Built with **vanilla JavaScript**, this project features a clean, minimal dark-themed UI with a professional design, optimized for readability and usability across devices.
+
+**✅ Live Demo:** [ChatBot](https://chatbotpranav.netlify.app)
+
 ---
 
 ## ✨ Features
 
-* 🤖 **Gemini-2.0-Flash** model for natural language response generation
-* 🖼️ Upload images for **image input understanding**
-* 📤 Pop-out buttons for file and image prompt input
-* 🔵 **Minimal dark UI** with **neon blue glow effect** on the prompt bar and controls
-* 💬 Dynamic chat interface with both user and bot avatars
-* 📜 Syntax highlighting using **PrismJS** for formatted responses
-* 📱 Responsive layout with media queries for mobile view
+* 🤖 **Gemini-2.0-Flash** model for intelligent text and image-based responses
+* 🖼️ **Image Upload** for multimodal input understanding
+* 💬 **Dynamic Chat Interface** with labeled user ("User") and AI ("Velocity") messages for clear distinction
+* 📜 **Syntax Highlighting** using **PrismJS** for code blocks, with vertical orientation for enhanced readability
+* 📱 **Responsive Layout** with media queries for seamless use on desktops, tablets, and mobile devices
+* 🖤 **Minimal Dark Theme** with glassmorphism effects in the prompt bar and header
+* 🔲 **Square Chat Areas** for a clean, modern aesthetic
+* 📏 **Optimized Spacing** with margin between chat container and prompt area to prevent overlap
 
 ---
 
 ## 📸 Screenshot
 
-![image alt](https://github.com/PranavHendre02/CHAT-BOT/blob/7ff828f126c67a3231c15e9d5ba6cd7e1ebe5a64/Interface.png)
+*Note*: The screenshot in the repository ([Interface.png](https://github.com/PranavHendre02/CHAT-BOT/blob/main/Interface.png)) reflects an earlier version with avatars and rounded chat areas. Please replace it with an updated screenshot showcasing the square chat areas, user/AI names, and vertical code display.
 
 ---
 
 ## 🧠 How It Works
 
-The frontend is entirely JavaScript-driven. Here's how the logic flows:
+The frontend is powered by vanilla JavaScript, with a straightforward workflow:
 
 1. **User Interaction**:
 
-   * The user types a message or uploads an image.
-   * Input is captured through the `<input>` element or file selector button.
+   * Users type messages in the text input or upload images via the file selector.
+   * Inputs are captured through the `<input>` element and buttons.
 
 2. **Request Handling**:
 
-   * When the user submits a prompt (`Enter` or Upload Button), JavaScript constructs a request to:
+   * On submission (Enter key or send button), JavaScript sends a request to:
 
      ```
      POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent
      ```
-   * Payload includes:
+
+   * Payload format:
 
      ```json
      {
        "contents": [
          {
            "parts": [
-             { "text": "Your question here" },
-             { "inline_data": { "mime_type": "...", "data": "base64..." } }
+             { "text": "User message here" },
+             { "inline_data": { "mime_type": "image/...", "data": "base64..." } }
            ]
          }
        ]
@@ -56,34 +59,35 @@ The frontend is entirely JavaScript-driven. Here's how the logic flows:
 
 3. **Response Rendering**:
 
-   * The response from Gemini is cleaned, parsed (especially Markdown), and dynamically injected into the DOM.
-   * Syntax-highlighted code blocks are rendered using PrismJS.
+   * Gemini responses are parsed, with Markdown (e.g., code blocks, inline math) converted to HTML.
+   * Code blocks are vertically oriented and syntax-highlighted using PrismJS.
+   * User and AI messages are labeled with "User" and "Velocity" for clarity.
 
 4. **Image Upload**:
 
-   * If an image is selected, it is converted to Base64 and sent in the request for multimodal understanding by Gemini.
+   * Uploaded images are converted to Base64 and included in the API request for Gemini’s multimodal analysis.
 
 ---
 
 ## 🍥 UI Design
 
-* 🖤 **Dark Theme** base
-* 🔹 **Prompt Input**: Blue neon glow (`box-shadow` on focus)
-* 🔘 **Buttons**: Pop-out hover effect with font-awesome icons
-* 📱 **Media Queries** ensure:
-
-  * Layout doesn’t break on small screens
-  * Bot/user containers don’t overlap
+* 🖤 **Dark Theme**: Gradient background (#0a0a0a to #1c2526) for a sleek look
+* 🔲 **Square Chat Areas**: Both user and AI messages use square containers with no border-radius
+* 📛 **Labeled Messages**: User messages prefixed with "User" (blue) and AI messages with "Velocity" (yellow)
+* 📜 **Vertical Code/Math Display**: Code blocks and math terms wrap vertically for readability, eliminating horizontal scroll
+* 🔍 **Glassmorphism**: Prompt bar and header use `backdrop-filter: blur` for a frosted-glass effect
+* 📱 **Responsive Design**: Media queries ensure usability on small screens, with inline prompt buttons and scaled fonts
 
 ---
 
 ## 💠 Tech Stack
 
-* **HTML / CSS / JavaScript**
-* **Google Gemini Flash API**
-* **Font Awesome** for icons
-* **PrismJS** for code formatting
-* **Responsive Design** with CSS Flexbox + Media Queries
+* **HTML / CSS / JavaScript**: Core frontend technologies
+* **Google Gemini 2.0 Flash API**: Powers text and image-based responses
+* **Font Awesome**: Icons for prompt buttons
+* **PrismJS**: Syntax highlighting for code blocks
+* **CSS Flexbox**: Layout management for chat and prompt areas
+* **Media Queries**: Responsive design for all screen sizes
 
 ---
 
@@ -93,13 +97,14 @@ The frontend is entirely JavaScript-driven. Here's how the logic flows:
 
    ```bash
    git clone https://github.com/PranavHendre02/CHAT-BOT.git
-
    ```
 
-2. **Open `index.html` in Browser** *(no server needed)*
+2. **Open `index.html` in a Browser**:
+
+   * No server is required; the app runs locally.
 
 3. **Set Your API Key**:
-   In `script.js`, replace the placeholder:
+   In `script.js`, replace the placeholder with your Google Generative Language API key:
 
    ```js
    const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=YOUR_API_KEY";
@@ -111,13 +116,10 @@ The frontend is entirely JavaScript-driven. Here's how the logic flows:
 
 ```
 chatbot-gemini/
-├── index.html
-├── style.css
-├── script.js
-├── person.png
-├── Mark_RGB_Blue.png
-├── Dual Ball@1x-1.2s-205px-205px.gif
-└── README.md
+├── index.html          # Main HTML structure
+├── style.css           # Styling for UI and responsiveness
+├── script.js           # JavaScript logic for API calls and rendering
+├── README.md           # Project documentation
 ```
 
 ---
@@ -139,5 +141,6 @@ MIT License
 ## 🤛🏼 Author
 
 **Pranav Hendre**
+
 
 ---

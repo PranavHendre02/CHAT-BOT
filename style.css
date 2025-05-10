@@ -3,247 +3,315 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-html,
-body {
+html, body {
     height: 100vh;
     width: 100%;
-    background-color: #000000;
-    color: #ffffff;
+    background: linear-gradient(135deg, #0a0a0a, #1c2526); /* Dark gradient */
+    color: #e0e0e0;
+    overflow: hidden;
+}
+
+/* Header */
+.chat-header {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-header h1 {
+    font-size: 1.8rem;
+    color: #00aaff;
+    font-weight: 600;
+}
+
+.chat-header p {
+    font-size: 0.9rem;
+    color: #b0b0b0;
 }
 
 /* Chat Container */
-.chat_container {
+.chat-container {
     width: 100%;
-    height: 80%;
+    height: calc(100vh - 180px); /* Adjust for header, prompt, and margin */
     padding: 2rem;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
-    background-color: #000;
-    /* Same as prompt background */
-    overflow: auto;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-    /* subtle shadow */
+    gap: 2rem;
+    scrollbar-width: thin;
+    scrollbar-color: #00aaff #1c2526;
+    margin-bottom: 20px; /* Add margin to prevent overlap with prompt */
+}
+
+.chat-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-container::-webkit-scrollbar-track {
+    background: #1c2526;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+    background: #00aaff;
+    border-radius: 4px;
 }
 
 /* Chat Boxes */
-.userchatbox,
-.aichatbox {
-    width: 60%;
-    position: relative;
-}
-
-.user_chat_area {
-    width: 90%;
-    padding: 2rem;
-    border-radius: 40px 0px 40px 40px;
-    background-color: #1e1e1e;
-    color: #ffffff;
-    position: relative;
-    left: 70%;
-    font-size: 1.3rem;
-    box-shadow: -2.5px 3px 5px rgba(120, 120, 120, 0.6);
+.userchatbox, .aichatbox {
     display: flex;
-    gap: 1rem;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto; /* Center chat boxes */
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.userchatbox {
+    justify-content: flex-end;
+}
+
+.aichatbox {
+    justify-content: flex-start;
+}
+
+.user-chat-area, .ai-chat-area {
+    max-width: 100%;
+    padding: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
     flex-direction: column;
+    gap: 0.5rem;
 }
 
-.chooseimg {
-    width: 40%;
-    height: 40%;
+.user-chat-area {
+    background: linear-gradient(45deg, #2a2a2a, #3a3a3a);
+    border-radius: 0; /* Square shape */
+    color: #e0e0e0;
 }
 
-.ai_chat_area {
-    position: relative;
-    left: 10%;
-    padding: 2rem;
-    border-radius: 0px 40px 40px 40px;
-    background-color: #2b2b2b;
+.ai-chat-area {
+    background: linear-gradient(45deg, #333333, #4a4a4a); /* Gray gradient */
+    border-radius: 0; /* Square shape */
     color: #ffffff;
-    font-size: 1.3rem;
-    box-shadow: 1px 1px 8px rgba(208, 207, 207, 0.6);
 }
 
-/* Icons */
-#botimage,
-#personimage {
-    position: absolute;
-    filter: drop-shadow(0 0 10px #0080ff);
+/* Code and Math Styling */
+.ai-chat-area pre, .user-chat-area pre {
+    background: #1a1a1a;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    margin: 0.5rem 0;
+    white-space: pre-wrap; /* Allow text to wrap vertically */
+    overflow-x: hidden; /* No horizontal scroll */
+    max-width: 100%;
 }
 
-#personimage {
-    left: 161%;
+.ai-chat-area code, .user-chat-area code {
+    font-family: 'Fira Code', monospace;
+    color: #f0f0f0;
+    display: block; /* Ensure code is vertically stacked */
 }
 
-/* #botimage:hover, #personimage:hover {
-    transform: scale(1.1);
-} */
-#botimage {
-    left: 0.4%;
+/* Math terms (e.g., inline math) */
+.ai-chat-area code.language-text, .user-chat-area code.language-text {
+    background: #222222;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    display: inline; /* Inline for short math terms */
 }
 
-img {
-    height: 4rem;
-    width: 4rem;
+/* Uploaded Images */
+.chooseimg {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 0.5rem;
 }
 
 /* Prompt Area */
 .prompt {
     width: 100%;
-    height: 20%;
-    background-color: #000;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
-    /* top shadow for "pop-out" */
-    border-top: none;
+    gap: 0.8rem;
+    padding: 1rem;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.4);
+    position: sticky;
+    bottom: 0;
 }
 
 /* Input Styling */
 .prompt input {
-    width: 50%;
-    height: 2rem;
-    padding: 2rem;
-    border-radius: 4rem;
-    background-color: #1f1f1f;
-    color: #fff;
-    font-size: 1.4rem;
-    border: 1px solid #333;
-    box-shadow: inset 0 0 10px #000;
+    flex: 1;
+    max-width: 600px;
+    padding: 0.8rem 1.5rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 1.1rem;
     outline: none;
-    transition: all 0.3s ease;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .prompt input:focus {
-    box-shadow: 0 0 6px #0080ff;
+    border-color: #00aaff;
+    box-shadow: 0 0 8px rgba(0, 170, 255, 0.5);
 }
 
-/* Placeholder Styling */
-::placeholder {
-    color: #ffffffd0;
-    /* shiny white */
-    font-weight: 600;
+.prompt input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
 }
 
-/* Send Button */
+/* Buttons */
 .prompt button {
-    background-color: transparent;
-    border: 3px solid #0080ff;
-    border-radius: 3rem;
-    width: 4rem;
-    height: 4rem;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    color: #fff;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #00aaff, #0077cc);
+    border: none;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .prompt button:hover {
-    background-color: #0080ff;
-    color: #fff;
-    box-shadow: 0 0 12px #0080ff;
+    transform: scale(1.1);
+    box-shadow: 0 0 12px rgba(0, 170, 255, 0.6);
 }
 
-/* Loader (if any) */
-#load {
-    background-color: transparent;
+.prompt button i {
+    font-size: 1.2rem;
 }
 
+/* Media Queries */
+
+/* Tablets and Small Laptops (max-width: 768px) */
 @media (max-width: 768px) {
-
-    /* Adjust Chat Area Widths */
-    .userchatbox,
-    .aichatbox {
-        width: 100%;
-    }
-
-    /* Reduce the size of chat areas */
-    .user_chat_area,
-    .ai_chat_area {
-        font-size: 1.1rem;
+    .chat-container {
         padding: 1.5rem;
+        gap: 1.5rem;
     }
 
-    /* Adjust the image sizes */
-    #botimage,
-    #personimage {
-        max-width: 15vw;
-        max-height: 15vh;
+    .userchatbox, .aichatbox {
+        max-width: 90%;
     }
 
-    /* Adjust Prompt Area */
+    .user-chat-area, .ai-chat-area {
+        font-size: 1.05rem;
+        padding: 1.2rem;
+    }
+
     .prompt {
-        flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.6rem;
+        padding: 0.8rem;
     }
 
-    /* Adjust Input Area */
     .prompt input {
-        width: 80%;
-        height: 2.5rem;
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .prompt button {
-        width: 3.5rem;
-        height: 3.5rem;
-    }
-
-    /* Align buttons next to input */
-    .prompt button,
-    .prompt input {
-        margin: 0;
-    }
-
-    /* Positioning for Upload and Image buttons */
-    .prompt {
-        flex-direction: row;
-        gap: 1rem;
-        justify-content: space-between;
+        width: 2.8rem;
+        height: 2.8rem;
     }
 }
 
-/* Media Query for Small Screens (Mobile View) */
-@media (max-width: 380px) {
+/* Small Tablets and Large Phones (max-width: 600px) */
+@media (max-width: 600px) {
+    .chat-header h1 {
+        font-size: 1.5rem;
+    }
 
-    /* Smaller font size for mobile */
-    .user_chat_area,
-    .ai_chat_area {
+    .chat-header p {
+        font-size: 0.8rem;
+    }
+
+    .chat-container {
+        padding: 1rem;
+        height: calc(100vh - 160px);
+        margin-bottom: 15px;
+    }
+
+    .user-chat-area, .ai-chat-area {
+        max-width: 85%;
         font-size: 1rem;
         padding: 1rem;
-        /* width: 50%; */
     }
-    .user_chat_area {
-        width: 50%;
-    }
-    .ai_chat_area {
-        width: 50%;
-    }
+
     .prompt {
-        padding: 1rem;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.8rem;
     }
 
     .prompt input {
-        width: 75%;
-        padding: none;
-        margin: none;
+        flex: 1;
+        font-size: 0.95rem;
     }
 
-    .prompt ::placeholder {
-        font-size: .6rem;
+   .prompt button {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
+
+/* Very Small Screens (max-width: 360px) */
+@media (max-width: 360px) {
+    .chat-container {
+        padding: 0.8rem;
+        gap: 1rem;
+    }
+
+    .user-chat-area, .ai-chat-area {
+        max-width: 90%;
+        font-size: 0.95rem;
+        padding: 0.8rem;
+    }
+
+    .prompt {
+        gap: 0.4rem;
+        padding: 0.6rem;
+    }
+
+    .prompt input {
+        font-size: 0.9rem;
+        padding: 0.7rem;
     }
 
     .prompt button {
-        width: 3rem;
-        height: 3rem;
+        width: 2.3rem;
+        height: 2.3rem;
     }
 
-    /* Make sure buttons don't overlap */
+    .prompt input::placeholder {
+        font-size:  0.85rem;
+    }
 }
