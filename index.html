@@ -39,17 +39,6 @@
             left: 50%;
             transform: translateX(-50%);
         }
-
-        /* Mobile menu animation */
-        #mobile-menu {
-            transition: all 0.3s ease-out;
-            max-height: 0;
-            overflow: hidden;
-        }
-        
-        #mobile-menu:not(.hidden) {
-            max-height: 200px;
-        }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -60,20 +49,11 @@
                 <p class="text-sm text-gray-400">Your Intelligent Assistant</p>
             </div>
             <div class="flex items-center ml-auto">
-                <ul id="nav-links" class="hidden md:flex md:space-x-6 text-white">
-                    <li><a href="about.html" class="uppercase font-semibold">About</a></li>
+                <ul class="flex text-white">
+                    <li><a href="about.html" class="uppercase font-semibold text-sm md:text-base">About</a></li>
                 </ul>
-                <button id="hamburger" class="md:hidden text-white focus:outline-none ml-4">
-                    <i class="fa-solid fa-bars w-6 h-6"></i>
-                </button>
             </div>
         </nav>
-        <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="hidden w-full bg-black bg-opacity-90 border-t border-gray-800">
-            <ul class="container mx-auto py-3 px-4">
-                <li class="py-2"><a href="about.html" class="uppercase font-semibold text-white hover:text-blue-400 transition-colors">About</a></li>
-            </ul>
-        </div>
     </header>
 
     <div class="chat-container mt-24 md:mt-28">
@@ -93,35 +73,5 @@
     </div>
 
     <script src="script.js"></script>
-    <script>
-        // Get DOM elements
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        // Toggle mobile menu when hamburger is clicked
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            
-            // Change hamburger icon to X when menu is open
-            const icon = hamburger.querySelector('i');
-            if (mobileMenu.classList.contains('hidden')) {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            } else {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
-            }
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (event) => {
-            if (!hamburger.contains(event.target) && !mobileMenu.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
-                const icon = hamburger.querySelector('i');
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            }
-        });
-    </script>
 </body>
 </html>
