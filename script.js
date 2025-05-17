@@ -57,7 +57,13 @@ async function generateResponse(aichatbox) {
             .replace(/\r?\n/g, '<br>');
 
         text.innerHTML = apiResponse;
-        Prism.highlightAllUnder(aichatbox);
+
+        // Check if Prism is defined before calling it
+        if (typeof Prism !== 'undefined') {
+            Prism.highlightAllUnder(aichatbox);
+        } else {
+            console.warn('Prism.js is not loaded; syntax highlighting skipped.');
+        }
     } catch (error) {
         console.error(error);
         text.innerHTML = "Sorry, something went wrong.";
