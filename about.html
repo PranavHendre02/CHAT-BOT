@@ -7,10 +7,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
-        nav ul li a, .social-links a {
+        nav ul li a, .social-links a, .back-button {
             position: relative;
         }
-        nav ul li a::after, .social-links a::after {
+        nav ul li a::after, .social-links a::after, .back-button::after {
             content: '';
             position: absolute;
             left: 0;
@@ -20,11 +20,22 @@
             background-color: #00aaff;
             transition: width 0.3s ease-in-out;
         }
-        nav ul li a:hover::after, .social-links a:hover::after {
+        nav ul li a:hover::after, .social-links a:hover::after, .back-button:hover::after {
             width: 100%;
         }
         body {
             background: linear-gradient(135deg, #0a0a0a, #1c2526);
+        }
+        .back-button {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+        }
+        .back-button i {
+            margin-right: 4px;
         }
     </style>
 </head>
@@ -35,12 +46,10 @@
                 <h1 class="text-2xl font-semibold text-blue-400">Velocity AI</h1>
                 <p class="text-sm text-gray-400">Your Intelligent Assistant</p>
             </div>
-            <button id="hamburger" class="md:hidden text-white focus:outline-none">
-                <i class="fa-solid fa-bars w-6 h-6"></i>
-            </button>
-            <ul id="nav-links" class="hidden md:flex md:space-x-6 text-white">
-                <li><a href="about.html" class="uppercase font-semibold">About</a></li>
-            </ul>
+            <a href="index.html" class="back-button">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span class="text-sm md:text-base">Back</span>
+            </a>
         </nav>
     </header>
     <main class="flex-grow mt-24 md:mt-28 container mx-auto px-4 py-8">
@@ -65,21 +74,5 @@
             </div>
         </section>
     </main>
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('hidden');
-            navLinks.classList.toggle('flex');
-            navLinks.classList.toggle('flex-col');
-            navLinks.classList.toggle('absolute');
-            navLinks.classList.toggle('top-16');
-            navLinks.classList.toggle('left-0');
-            navLinks.classList.toggle('w-full');
-            navLinks.classList.toggle('bg-black');
-            navLinks.classList.toggle('bg-opacity-75');
-            navLinks.classList.toggle('p-4');
-        });
-    </script>
 </body>
 </html>
