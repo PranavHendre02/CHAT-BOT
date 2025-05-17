@@ -6,13 +6,14 @@
     <title>Velocity AI Chatbot</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-dark.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prismjs/1.29.0/themes/prism-dark.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prismjs/1.29.0/prism.min.js"></script>
     <style>
         nav ul li a, .social-links a {
             position: relative;
         }
+        
         nav ul li a::after, .social-links a::after {
             content: '';
             position: absolute;
@@ -23,40 +24,65 @@
             background-color: #00aaff;
             transition: width 0.3s ease-in-out;
         }
+        
         nav ul li a:hover::after, .social-links a:hover::after {
             width: 100%;
         }
+        
         .text-center {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            width: 100%; /* Ensure it takes full width for centering */
-            position: absolute; /* Position absolutely to center in header */
+            width: 100%;
+            position: absolute;
             left: 50%;
-            transform: translateX(-50%); /* Center horizontally */
+            transform: translateX(-50%);
+        }
+
+        /* Mobile nav menu styles */
+        .mobile-nav {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 1rem;
+            z-index: 20;
+        }
+
+        .mobile-nav li {
+            margin: 0.75rem 0;
         }
     </style>
 </head>
-<body>
+<body class="bg-gray-900 text-white">
     <header class="fixed top-0 w-full z-10 bg-black bg-opacity-70 backdrop-blur-md border-b border-gray-700">
         <nav class="container mx-auto flex items-center justify-between p-4 relative">
             <div class="text-center">
                 <h1 class="text-2xl font-semibold text-blue-400">Velocity AI</h1>
                 <p class="text-sm text-gray-400">Your Intelligent Assistant</p>
             </div>
-            <button id="hamburger" class="md:hidden text-white focus:outline-none ml-auto">
-                <i class="fa-solid fa-bars w-6 h-6"></i>
-            </button>
-            <ul id="nav-links" class="hidden md:flex md:space-x-6 text-white ml-auto">
-                <li><a href="about.html" class="uppercase font-semibold">About</a></li>
-            </ul>
+            <div class="flex items-center ml-auto">
+                <ul id="nav-links" class="hidden md:flex md:space-x-6 text-white">
+                    <li><a href="about.html" class="uppercase font-semibold">About</a></li>
+                </ul>
+                <button id="hamburger" class="md:hidden text-white focus:outline-none ml-4">
+                    <i class="fa-solid fa-bars w-6 h-6"></i>
+                </button>
+            </div>
         </nav>
+        <!-- Mobile Navigation Menu -->
+        <ul id="mobile-nav" class="hidden mobile-nav">
+            <li><a href="about.html" class="uppercase font-semibold text-white">About</a></li>
+        </ul>
     </header>
+
     <div class="chat-container mt-24 md:mt-28">
         <div class="userchatbox"></div>
         <div class="aichatbox"></div>
     </div>
+
     <div class="prompt">
         <input type="text" id="prompt" placeholder="Ask Velocity anything...">
         <button id="btn1" class="image-btn">
@@ -67,21 +93,35 @@
             <i class="fa-solid fa-paper-plane"></i>
         </button>
     </div>
+
     <script src="script.js"></script>
     <script>
         const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
+        const mobileNav = document.getElementById('mobile-nav');
+        
         hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('hidden');
-            navLinks.classList.toggle('flex');
-            navLinks.classList.toggle('flex-col');
-            navLinks.classList.toggle('absolute');
-            navLinks.classList.toggle('top-16');
-            navLinks.classList.toggle('left-0');
-            navLinks.classList.toggle('w-full');
-            navLinks.classList.toggle('bg-black');
-            navLinks.classList.toggle('bg-opacity-75');
-            navLinks.classList.toggle('p-4');
+            // Toggle the mobile navigation menu
+            mobileNav.classList.toggle('hidden');
+            
+            // Change hamburger icon to X when menu is open
+            const icon = hamburger.querySelector('i');
+            if (mobileNav.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!hamburger.contains(event.target) && !mobileNav.contains(event.target)) {
+                mobileNav.classList.add('hidden');
+                const icon = hamburger.querySelector('i');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
         });
     </script>
 </body>
