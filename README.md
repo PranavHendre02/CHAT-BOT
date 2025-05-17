@@ -96,7 +96,7 @@ The frontend is powered by vanilla JavaScript, with a straightforward workflow:
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/PranavHendre02/CHAT-BOT.git
+   git clone https://github.com/PranavHendre02/VELOCITY-AI-CHAT-BOT.git
    ```
 
 2. **Open `index.html` in a Browser**:
