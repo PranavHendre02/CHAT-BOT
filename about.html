@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velocity AI - About</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        nav ul li a, .social-links a {
+            position: relative;
+        }
+        nav ul li a::after, .social-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            height: 2px;
+            width: 0;
+            background-color: #00aaff;
+            transition: width 0.3s ease-in-out;
+        }
+        nav ul li a:hover::after, .social-links a:hover::after {
+            width: 100%;
+        }
+        body {
+            background: linear-gradient(135deg, #0a0a0a, #1c2526);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col text-gray-300">
+    <header class="fixed top-0 w-full z-10 bg-black bg-opacity-70 backdrop-blur-md border-b border-gray-700">
+        <nav class="container mx-auto flex items-center justify-between p-4">
+            <div class="text-center">
+                <h1 class="text-2xl font-semibold text-blue-400">Velocity AI</h1>
+                <p class="text-sm text-gray-400">Your Intelligent Assistant</p>
+            </div>
+            <button id="hamburger" class="md:hidden text-white focus:outline-none">
+                <i class="fa-solid fa-bars w-6 h-6"></i>
+            </button>
+            <ul id="nav-links" class="hidden md:flex md:space-x-6 text-white">
+                <li><a href="about.html" class="uppercase font-semibold">About</a></li>
+                <li class="social-links flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4 md:mt-0">
+                    <a href="https://github.com/PranavHendre02" target="_blank" class="flex items-center text-white hover:text-blue-400">
+                        <img src="https://img.icons8.com/ios-filled/24/FFFFFF/github.png" alt="GitHub" class="w-6 h-6 mr-1">
+                        <span class="font-semibold">GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/pranav-hendre-b07339316/" target="_blank" class="flex items-center text-white hover:text-blue-400">
+                        <img src="https://img.icons8.com/ios-filled/24/FFFFFF/linkedin.png" alt="LinkedIn" class="w-6 h-6 mr-1">
+                        <span class="font-semibold">LinkedIn</span>
+                    </a>
+                    <a href="https://www.instagram.com/pranavhendre02/" target="_blank" class="flex items-center text-white hover:text-blue-400">
+                        <img src="https://img.icons8.com/ios-filled/24/FFFFFF/instagram-new.png" alt="Instagram" class="w-6 h-6 mr-1">
+                        <span class="font-semibold">Instagram</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="flex-grow mt-24 md:mt-28 container mx-auto px-4 py-8">
+        <section class="bg-black bg-opacity-70 backdrop-blur-md p-6 rounded-lg max-w-2xl mx-auto">
+            <h2 class="text-2xl font-semibold text-blue-400 mb-4 text-center">About Velocity AI</h2>
+            <p class="text-gray-300 mb-4">
+                Velocity AI is an intelligent chatbot powered by the Gemini API, designed to provide accurate and formatted responses to text and image-based queries.
+            </p>
+            <div class="social-links flex justify-center space-x-4 mt-4">
+                <a href="https://github.com/PranavHendre02" target="_blank" class="flex items-center text-white hover:text-blue-400">
+                    <img src="https://img.icons8.com/ios-filled/24/FFFFFF/github.png" alt="GitHub" class="w-6 h-6 mr-1">
+                    <span class="font-semibold">GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/pranav-hendre-b07339316/" target="_blank" class="flex items-center text-white hover:text-blue-400">
+                    <img src="https://img.icons8.com/ios-filled/24/FFFFFF/linkedin.png" alt="LinkedIn" class="w-6 h-6 mr-1">
+                    <span class="font-semibold">LinkedIn</span>
+                </a>
+                <a href="https://www.instagram.com/pranavhendre02/" target="_blank" class="flex items-center text-white hover:text-blue-400">
+                    <img src="https://img.icons8.com/ios-filled/24/FFFFFF/instagram-new.png" alt="Instagram" class="w-6 h-6 mr-1">
+                    <span class="font-semibold">Instagram</span>
+                </a>
+            </div>
+        </section>
+    </main>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('hidden');
+            navLinks.classList.toggle('flex');
+            navLinks.classList.toggle('flex-col');
+            navLinks.classList.toggle('absolute');
+            navLinks.classList.toggle('top-16');
+            navLinks.classList.toggle('left-0');
+            navLinks.classList.toggle('w-full');
+            navLinks.classList.toggle('bg-black');
+            navLinks.classList.toggle('bg-opacity-75');
+            navLinks.classList.toggle('p-4');
+        });
+    </script>
+</body>
+</html>
