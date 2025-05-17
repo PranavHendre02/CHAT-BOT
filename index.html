@@ -14,19 +14,8 @@
             position: relative;
         }
         
-        nav ul li a::after, .social-links a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -2px;
-            height: 2px;
-            width: 0;
-            background-color: #00aaff;
-            transition: width 0.3s ease-in-out;
-        }
-        
-        nav ul li a:hover::after, .social-links a:hover::after {
-            width: 100%;
+        nav ul li a:hover, .social-links a:hover {
+            color: #00aaff;
         }
         
         .text-center {
@@ -50,7 +39,11 @@
             </div>
             <div class="flex items-center ml-auto">
                 <ul class="flex text-white">
-                    <li><a href="about.html" class="uppercase font-semibold text-sm md:text-base">About</a></li>
+                    <li>
+                        <a href="about.html" class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-600 hover:border-blue-400 transition-colors">
+                            <i class="fa-solid fa-info text-sm"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
