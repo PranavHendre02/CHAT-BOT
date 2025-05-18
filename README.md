@@ -2,7 +2,7 @@
 
 A modern, responsive web-based chatbot powered by the **Google Gemini 2.0 Flash API** for generating natural language responses and analyzing uploaded images. Built with **vanilla JavaScript**, this project features a clean, minimal dark-themed UI with a professional design, optimized for readability and usability across devices.
 
-**✅ Live Demo:** [ChatBot](https://velocityaipranav.netlify.app)
+**✅ Live Demo:** [VELOCITY AI](https://velocityaipranav.netlify.app)
 
 ---
 
